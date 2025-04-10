@@ -33,6 +33,10 @@ export const AddNew = ({ refClick }: any) => {
 
   const onSubmit = (data: any) => {
     console.log("data", data);
+    const dataFilter = data.vocabularyList.filter((item: any) => !!item?.english && !!item?.vietnamese )
+    const _vocabularyList = JSON.parse(localStorage.getItem('vocabularyList') || '[]')
+    const _data = [..._vocabularyList, ...dataFilter]
+    localStorage.setItem('vocabularyList', JSON.stringify(_data))
   };
 
   return (
